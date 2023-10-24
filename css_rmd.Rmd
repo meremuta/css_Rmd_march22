@@ -125,13 +125,13 @@ The best place for it is right after the heading, like this:
 
 The beginning with `<style>`
 
-![](gems5.png)
+![](pics/gems5.png)
 
 
 The ending with `</style>`
 
 
-![](gems6.png)
+![](pics/gems6.png)
 
 **Does RStudio provide any useful features for customizing RMD files?**
 
@@ -142,14 +142,14 @@ First of all, you have to knit your file.
 The second step is to press the right mouse button. Here you will see *Inspect element*. Press it.
 
 
-![](gems2.png)
+![](pics/gems2.png)
 
 
 New window with RStudio DevTools will open. Here you will find the HTML code of your RMD. 
 
 You can custom any element of the RMD file (I think so)! To select the element you want to change, press on this buttom:
 
-![](gems3.png)
+![](pics/gems3.png)
 
 
 It will allow you to select element directly on the RMD page, and will show the HTML code for this element, and style settings which are applied.
@@ -157,19 +157,19 @@ It will allow you to select element directly on the RMD page, and will show the 
 For instance, I want to change a picture (Note that graphs are the images in the RMD file):
 
 
-![](gems1.png)
+![](pics/gems1.png)
 
 So here I have selected the graph by clicking on it, and the HTML code for it now is highlighted in the DevTools window with blue color. On the right of DevTools window we can see the folder "Styles". Here we want to test what exactly we cant to change. For example:
 
 
-![](gems4.png)
+![](pics/gems4.png)
 
 
 Here I have changed the border radius.
 
 So, now you know how it will look like. If you like it, you then have to copy the whole part into your RMD after heading. like this: 
 
-![](gems7.png)
+![](pics/gems7.png)
 
 
 
