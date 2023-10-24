@@ -1,0 +1,210 @@
+---
+title: "Personal RMD"
+author: "Eremuta Maria"
+date: " Last updated: `r format(Sys.time(), '%d %B %Y')`."
+output: 
+  html_document:
+    code_folding: hide
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    toc: yes
+---
+
+<style>
+body{
+  background: #d8f3dc;
+  color: #1b4332;
+  font-family: Garamond, serif;
+  font-size: 18px;
+}
+pre.r{
+  background: #95d5b2;
+  color: #081c15
+}
+pre:not([class]) {
+    background-color: #b7e4c7
+}
+
+.hljs-number {
+    color:#081c15;
+}
+
+.hljs-keyword {
+    color: #1b4332;
+    font-weight: bold;
+}
+
+h1{
+  color: #081c15;
+  font-weight: bold;
+  font-size: 30px;
+}
+#header{
+  color: #52b788;
+  font-weight: bold;
+}
+
+#header h1{
+  color: #52b788;
+  font-weight: bold;
+}
+#header h4{
+  font-weight: bold;
+}
+
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    z-index: 2;
+    color: #d8f3dc;
+    background-color: #52b788;
+    border-color: #52b788;
+    font-weight: bold;
+}
+
+.btn-default {
+    color: #d8f3dc;
+    background-color: #52b788;
+    border-color: #081c15;
+}
+
+.btn-default:hover {
+    color: #d8f3dc;
+    background-color: #52b788;
+    border-color: #081c15;
+}
+
+.tocify {
+    border-radius: 30px;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+.hljs-string {
+    color: #ffffff;
+}
+img {
+    border-radius: 15px;
+}
+</style>
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+# Customized Rmd
+
+```{r}
+library(dplyr)
+library(ggplot2)
+data = iris
+```
+
+
+
+So today I want to tell you how to **customize your Rmd with help of CSS**!
+
+**What is CSS?** 
+
++ CSS stands for Cascading Style Sheets
++ CSS describes how HTML elements are to be displayed on screen, paper, or in other media
+
+
+More info you can find here: https://www.w3schools.com/css/default.asp
+
+
+This document has also been modified with CSS.
+
+
+**Where and how should you write CSS code?**
+
+The best place for it is right after the heading, like this: 
+
+
+The beginning with `<style>`
+
+![](gems5.png)
+
+
+The ending with `</style>`
+
+
+![](gems6.png)
+
+**Does RStudio provide any useful features for customizing RMD files?**
+
+Actually, kind of. 
+
+First of all, you have to knit your file.
+
+The second step is to press the right mouse button. Here you will see *Inspect element*. Press it.
+
+
+![](gems2.png)
+
+
+New window with RStudio DevTools will open. Here you will find the HTML code of your RMD. 
+
+You can custom any element of the RMD file (I think so)! To select the element you want to change, press on this buttom:
+
+![](gems3.png)
+
+
+It will allow you to select element directly on the RMD page, and will show the HTML code for this element, and style settings which are applied.
+
+For instance, I want to change a picture (Note that graphs are the images in the RMD file):
+
+
+![](gems1.png)
+
+So here I have selected the graph by clicking on it, and the HTML code for it now is highlighted in the DevTools window with blue color. On the right of DevTools window we can see the folder "Styles". Here we want to test what exactly we cant to change. For example:
+
+
+![](gems4.png)
+
+
+Here I have changed the border radius.
+
+So, now you know how it will look like. If you like it, you then have to copy the whole part into your RMD after heading. like this: 
+
+![](gems7.png)
+
+
+
+**The changes that you make in DevTools do not save, by the way!**
+
+
+Sometimes the styles that you set might not work, since there are some other style settings, that are more important than yours. You can see all the settings applied to the element in the "Style" folder. Actually, to deal with it you will need to dive more deep in the CSS, but that is interesting and much easier than Regression!
+
+**Good luck!**
+
+## Table
+
+Some table as an example:
+
+```{r results = "asis"}
+library(qwraps2)
+options(qwraps2_markup = "markdown")
+sum = qsummary(data[,1:4],
+           numeric_summaries = list("Average" = "~ mean(%s)"),
+           n_perc_args = list(digits = 1, show_symbol = TRUE, show_denom = "always"))
+
+tab = summary_table(data, summaries = sum, by = c("Species"))
+tab
+
+```
+
+
+## Graph
+
+```{r}
+ggplot()+
+  geom_boxplot(data, mapping = aes( Species, Petal.Length))+
+  labs(title = "Example of graph")+
+  theme_light()
+```
+
+
+
